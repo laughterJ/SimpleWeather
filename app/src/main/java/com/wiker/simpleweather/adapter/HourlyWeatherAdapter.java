@@ -1,4 +1,4 @@
-package com.wiker.simpleweather;
+package com.wiker.simpleweather.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wiker.framework.util.DateUtil;
+import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.HourlyWeather;
 
 import java.util.List;

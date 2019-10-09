@@ -44,6 +44,7 @@
 
             <include layout="@layout/weather_hourly"/>
 
+            <include layout="@layout/weather_forecast"/>
 
         </LinearLayout>
 

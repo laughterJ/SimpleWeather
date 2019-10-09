@@ -2,4 +2,5 @@
     <string name="app_name">SimpleWeather</string>
     <string name="temp">%1$s ℃</string>
     <string name="empty_data">--</string>
+    <string name="weather_hourly">24小时天气</string>
 </resources>

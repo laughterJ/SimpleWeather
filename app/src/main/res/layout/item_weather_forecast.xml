@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingEnd="0dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+    
+    <TextView
+        android:id="@+id/tv_fore_date"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="@string/empty_data"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"/>
+
+    <TextView
+        android:id="@+id/tv_fore_weather"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/empty_data"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"/>
+
+    <TextView
+        android:id="@+id/tv_fore_tmp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/empty_data"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"/>
+
+    <TextView
+        android:id="@+id/tv_fore_wind"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/empty_data"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"/>
+
+</LinearLayout>

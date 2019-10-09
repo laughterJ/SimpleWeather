@@ -1,4 +1,4 @@
-package com.wiker.simpleweather;
+package com.wiker.simpleweather.util;
 
 import com.google.gson.JsonObject;
 
