@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimpleWeather</string>
+    <string name="temp">%1$s ℃</string>
+    <string name="empty_data">--</string>
 </resources>
