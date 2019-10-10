@@ -13,6 +13,8 @@ import com.wiker.simpleweather.adapter.HourlyWeatherAdapter;
 import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.ForecastWeather;
 import com.wiker.simpleweather.model.HourlyWeather;
+import com.wiker.simpleweather.model.LivingIndex;
+import com.wiker.simpleweather.model.LivingIndexItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,11 @@ public class MainActivity extends BaseActivity{
 
     @BindView(R.id.rv_hourly) RecyclerView rvHourly;
     @BindView(R.id.ll_forecast) LinearLayout llForecast;
+    @BindView(R.id.tv_living_index) TextView tvLivingIndex;
+    @BindView(R.id.tv_living_des) TextView tvLivingDes;
+    @BindView(R.id.ll_living_index) LinearLayout llLivingIndex;
+
+    private List<LivingIndexItem> livingIndexItems;
 
     @Override
     public int getLayout() {
@@ -62,6 +69,16 @@ public class MainActivity extends BaseActivity{
             weather.setWindDes("西北风");
             showForeWeather(weather);
         }
+
+        livingIndexItems = new ArrayList<>();
+        for (int i=0;i<5;i++) {
+            LivingIndexItem indexItem = new LivingIndexItem();
+            indexItem.setType("舒适度指数");
+            indexItem.setBrf("舒适");
+            indexItem.setTxt("白天不太热也不太冷，风力不大，相信您在这样的天气条件下，应会感到比较清爽和舒适。");
+            livingIndexItems.add(indexItem);
+        }
+        showLivingIndex();
     }
 
     private void showForeWeather(ForecastWeather weather) {
@@ -74,5 +91,16 @@ public class MainActivity extends BaseActivity{
         ((TextView)itemView.findViewById(R.id.tv_fore_tmp)).setText(tmpData);
         ((TextView)itemView.findViewById(R.id.tv_fore_wind)).setText(weather.getWindDes());
         llForecast.addView(itemView);
+    }
+
+    private void showLivingIndex() {
+        tvLivingIndex.setText(String.format(getString(R.string.living_index), livingIndexItems.get(0).getBrf()));
+        tvLivingDes.setText(livingIndexItems.get(0).getTxt());
+        for (int i=1;i<livingIndexItems.size();i++) {
+            View itemView = LayoutInflater.from(this).inflate(R.layout.item_living_index, llLivingIndex, false);
+            ((TextView)itemView.findViewById(R.id.tv_index_type)).setText(livingIndexItems.get(i).getType());
+            ((TextView)itemView.findViewById(R.id.tv_index_des)).setText(livingIndexItems.get(i).getBrf());
+            llLivingIndex.addView(itemView);
+        }
     }
 }

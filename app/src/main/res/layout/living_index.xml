@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_living_index"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorWhite"/>
+
+    <TextView
+        android:id="@+id/tv_living_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/living_index"
+        android:textSize="16sp"
+        android:textColor="@color/colorWhite"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"/>
+
+    <TextView
+        android:id="@+id/tv_living_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/LivingIndexTextStyle"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"/>
+
+</LinearLayout>

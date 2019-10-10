@@ -46,6 +46,8 @@
 
             <include layout="@layout/weather_forecast"/>
 
+            <include layout="@layout/living_index"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -8,6 +8,8 @@ public class ForecastWeather {
     private String maxTmp;
     private String minTmp;
     private String windDes;
+    private String weatherData;
+    private String tmpData;
 
     public String getDate() {
         return date;
@@ -55,5 +57,21 @@ public class ForecastWeather {
 
     public void setWindDes(String windDes) {
         this.windDes = windDes;
+    }
+
+    public String getWeatherData() {
+        return weatherData;
+    }
+
+    public void setWeatherData(String weatherData) {
+        this.weatherData = weatherData;
+    }
+
+    public String getTmpData() {
+        return tmpData;
+    }
+
+    public void setTmpData(String tmpData) {
+        this.tmpData = tmpData;
     }
 }
