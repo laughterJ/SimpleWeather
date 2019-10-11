@@ -6,26 +6,27 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.wiker.framework.activity.BaseActivity;
 import com.wiker.simpleweather.adapter.HourlyWeatherAdapter;
 import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.ForecastWeather;
 import com.wiker.simpleweather.model.HourlyWeather;
 import com.wiker.simpleweather.model.LivingIndexItem;
-import com.wiker.simpleweather.model.ProvinceModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.exception.BmobException;
 
 public class MainActivity extends BaseActivity{
 
+    @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.rv_hourly) RecyclerView rvHourly;
     @BindView(R.id.ll_forecast) LinearLayout llForecast;
     @BindView(R.id.tv_living_index) TextView tvLivingIndex;
@@ -42,7 +43,8 @@ public class MainActivity extends BaseActivity{
 
     @Override
     public void initView() {
-
+        mToolbar.setTitle("浦东新区");
+        setSupportActionBar(mToolbar);
     }
   @Override
     public void initData(){
