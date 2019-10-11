@@ -1,13 +1,21 @@
 package com.wiker.simpleweather.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobRelation;
 
 public class Town extends BmobObject {
 
+    @SerializedName("id")
     private int townId;
+    @SerializedName("name")
     private String townName;
+    @SerializedName("areacode")
     private String townCode;
-    private City mCity;
+    @SerializedName("parentid")
+    private int provinceId;
+    private BmobRelation mCity;
 
     public int getTownId() {
         return townId;
@@ -33,11 +41,19 @@ public class Town extends BmobObject {
         this.townCode = townCode;
     }
 
-    public City getmCity() {
+    public int getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(int provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public BmobRelation getmCity() {
         return mCity;
     }
 
-    public void setmCity(City mCity) {
+    public void setmCity(BmobRelation mCity) {
         this.mCity = mCity;
     }
 }

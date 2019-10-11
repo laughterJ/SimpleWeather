@@ -1,5 +1,6 @@
 package com.wiker.simpleweather.activity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,8 +14,8 @@ import com.wiker.simpleweather.adapter.HourlyWeatherAdapter;
 import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.ForecastWeather;
 import com.wiker.simpleweather.model.HourlyWeather;
-import com.wiker.simpleweather.model.LivingIndex;
 import com.wiker.simpleweather.model.LivingIndexItem;
+import com.wiker.simpleweather.sql.CityDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivity{
   @Override
     public void initData(){
         Bmob.initialize(this, "81ca7be0d101e76d8a7e0066518a0cdc");
+
         List<HourlyWeather> weathers = new ArrayList<>();
         for (int i=0;i<10;i++){
             HourlyWeather weather = new HourlyWeather();
