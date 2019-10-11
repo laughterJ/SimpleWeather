@@ -1,6 +1,7 @@
 package com.wiker.framework.application;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * created by JH at 2019/4/19
@@ -8,12 +9,16 @@ import android.app.Application;
  */
 
 public class MyApplication extends Application {
-    private static MyApplication mInstance;
 
-    public static MyApplication getInstance() {
-        if (mInstance == null){
-            mInstance = new MyApplication();
-        }
-        return mInstance;
+    private static Context mContext;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = getApplicationContext();
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 }

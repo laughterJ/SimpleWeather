@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
 public class CityModel extends BmobObject {
 
     public void getCityData(OnResponseListerer mListener) {
-        CityDatabaseHelper mCityDbHelper = new CityDatabaseHelper(MyApplication.getInstance(),"city.db", null, 1);
+        CityDatabaseHelper mCityDbHelper = new CityDatabaseHelper(MyApplication.getContext(),"city.db", null, 1);
         SQLiteDatabase db = mCityDbHelper.getWritableDatabase();
         Cursor mCursor = db.query("City", null, null, null, null, null, null);
         if (mCursor != null && mCursor.moveToFirst()) {

@@ -34,7 +34,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mContext = getContext() != null ? getContext() : MyApplication.getInstance();
+        mContext = getContext() != null ? getContext() : MyApplication.getContext();
         initView();
         initData();
     }

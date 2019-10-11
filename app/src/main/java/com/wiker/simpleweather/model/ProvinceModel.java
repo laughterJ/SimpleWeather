@@ -1,6 +1,7 @@
 package com.wiker.simpleweather.model;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,8 +19,8 @@ import cn.bmob.v3.listener.FindListener;
 
 public class ProvinceModel{
 
-    public void getProvinceData(OnResponseListener mListerer) {
-        CityDatabaseHelper cityDbHelper = new CityDatabaseHelper(MyApplication.getInstance(), "city.db", null, 1);
+    public void getProvinceData(Context mContext, OnResponseListener mListerer) {
+        CityDatabaseHelper cityDbHelper = new CityDatabaseHelper(MyApplication.getContext(), "city.db", null, 1);
         SQLiteDatabase db = cityDbHelper.getWritableDatabase();
         Cursor mCursor = db.query("Province", null, null, null, null, null, null);
         if (mCursor != null && mCursor.moveToFirst()){
@@ -45,7 +46,7 @@ public class ProvinceModel{
                             values.put("areacode", ele.getProvinceCode());
                             db.insert("Province", null, values);
                         }
-                        getProvinceData(mListerer);
+                        getProvinceData(MyApplication.getContext(), mListerer);
                     }else {
                         mListerer.onError(e);
                     }

@@ -15,13 +15,14 @@ import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.ForecastWeather;
 import com.wiker.simpleweather.model.HourlyWeather;
 import com.wiker.simpleweather.model.LivingIndexItem;
-import com.wiker.simpleweather.sql.CityDatabaseHelper;
+import com.wiker.simpleweather.model.ProvinceModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
 
 public class MainActivity extends BaseActivity{
 
