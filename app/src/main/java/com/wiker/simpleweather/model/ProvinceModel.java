@@ -1,13 +1,14 @@
 package com.wiker.simpleweather.model;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.google.gson.annotations.SerializedName;
 import com.wiker.framework.application.MyApplication;
+import com.wiker.simpleweather.adapter.AddressAdapter;
 import com.wiker.simpleweather.sql.CityDatabaseHelper;
+import com.wiker.simpleweather.views.AreaPickerView.OnResponseListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,10 @@ import cn.bmob.v3.listener.FindListener;
 
 public class ProvinceModel{
 
-    public void getProvinceData(Context mContext, OnResponseListener mListerer) {
-        CityDatabaseHelper cityDbHelper = new CityDatabaseHelper(MyApplication.getContext(), "city.db", null, 1);
+    @SuppressWarnings("unchecked")
+    public void getProvinceData(OnResponseListener mListerer) {
+        CityDatabaseHelper cityDbHelper = new CityDatabaseHelper(MyApplication.getContext(),
+                "city.db", null, CityDatabaseHelper.DB_VERSION);
         SQLiteDatabase db = cityDbHelper.getWritableDatabase();
         Cursor mCursor = db.query("Province", null, null, null, null, null, null);
         if (mCursor != null && mCursor.moveToFirst()){
@@ -32,7 +35,7 @@ public class ProvinceModel{
                 mProvince.setProvinceCode(mCursor.getString(mCursor.getColumnIndex("areacode")));
                 provinceList.add(mProvince);
             }while (mCursor.moveToNext());
-            mListerer.onSuccess(provinceList);
+            mListerer.onSuccess((List)provinceList, AddressAdapter.TYPE_PPOVINCE);
         }else {
             BmobQuery<Province> mQuery = new BmobQuery<>();
             mQuery.findObjects(new FindListener<Province>() {
@@ -46,7 +49,7 @@ public class ProvinceModel{
                             values.put("areacode", ele.getProvinceCode());
                             db.insert("Province", null, values);
                         }
-                        getProvinceData(MyApplication.getContext(), mListerer);
+                        getProvinceData(mListerer);
                     }else {
                         mListerer.onError(e);
                     }
@@ -86,10 +89,5 @@ public class ProvinceModel{
         public void setProvinceCode(String provinceCode) {
             this.provinceCode = provinceCode;
         }
-    }
-
-    public interface OnResponseListener {
-        void onSuccess(List<Province> provinceList);
-        void onError(BmobException e);
     }
 }

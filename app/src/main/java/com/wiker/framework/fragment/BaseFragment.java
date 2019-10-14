@@ -42,15 +42,15 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 获取布局文件
      */
-    abstract int getLayout();
+    protected abstract int getLayout();
 
     /**
      * 初始化控件
      */
-    abstract void initView();
+    protected abstract void initView();
 
     /**
      * 初始化数据
      */
-    abstract void initData();
+    protected abstract void initData();
 }

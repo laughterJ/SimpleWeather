@@ -38,15 +38,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 获取布局文件
      */
-    public abstract int getLayout();
+    protected abstract int getLayout();
 
     /**
      * 初始化控件
      */
-    public abstract void initView();
+    protected abstract void initView();
 
     /**
      * 初始化数据
      */
-    public abstract void initData();
+    protected abstract void initData();
 }

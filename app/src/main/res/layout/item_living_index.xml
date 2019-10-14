@@ -11,12 +11,12 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        style="@style/LivingIndexTextStyle"/>
+        style="@style/CommonTextStyle"/>
 
     <TextView
         android:id="@+id/tv_index_des"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/LivingIndexTextStyle"/>
+        style="@style/CommonTextStyle"/>
 
 </LinearLayout>

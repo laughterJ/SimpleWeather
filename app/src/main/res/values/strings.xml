@@ -4,4 +4,6 @@
     <string name="empty_data">--</string>
     <string name="weather_hourly">24小时天气</string>
     <string name="living_index">舒适度指数：%1$s</string>
+
+    <string name="confirm">确定</string>
 </resources>

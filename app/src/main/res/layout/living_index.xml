@@ -25,7 +25,7 @@
         android:id="@+id/tv_living_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/LivingIndexTextStyle"
+        style="@style/CommonTextStyle"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"/>
 

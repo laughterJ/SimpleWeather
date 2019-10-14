@@ -3,10 +3,13 @@ package com.wiker.simpleweather.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 import com.wiker.framework.application.MyApplication;
+import com.wiker.simpleweather.adapter.AddressAdapter;
 import com.wiker.simpleweather.sql.CityDatabaseHelper;
+import com.wiker.simpleweather.views.AreaPickerView.OnResponseListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +22,13 @@ import cn.bmob.v3.listener.FindListener;
 
 public class CityModel extends BmobObject {
 
-    public void getCityData(OnResponseListerer mListener) {
-        CityDatabaseHelper mCityDbHelper = new CityDatabaseHelper(MyApplication.getContext(),"city.db", null, 1);
+    @SuppressWarnings("unchecked")
+    public void getCityData(int parentId, OnResponseListener mListener) {
+        CityDatabaseHelper mCityDbHelper = new CityDatabaseHelper(MyApplication.getContext(),
+                "city.db", null, CityDatabaseHelper.DB_VERSION);
         SQLiteDatabase db = mCityDbHelper.getWritableDatabase();
-        Cursor mCursor = db.query("City", null, null, null, null, null, null);
+        Cursor mCursor = db.query("City", null, "parentid = ?",new String[]{String.valueOf(parentId)},
+                null, null, null, null);
         if (mCursor != null && mCursor.moveToFirst()) {
             List<City> cityList = new ArrayList<>();
             do {
@@ -33,10 +39,11 @@ public class CityModel extends BmobObject {
                 mCity.setProvinceId(mCursor.getInt(mCursor.getColumnIndex("parentid")));
                 cityList.add(mCity);
             }while (mCursor.moveToNext());
-            mListener.onSuccess(cityList);
+            mListener.onSuccess((List) cityList, AddressAdapter.TYPE_CITY);
         }else {
             BmobQuery<City> mQuery = new BmobQuery<>();
-            mQuery.findObjects(new FindListener<City>() {
+            mQuery.addWhereEqualTo("parentid", parentId)
+                    .findObjects(new FindListener<City>() {
                 @Override
                 public void done(List<City> list, BmobException e) {
                     if (e == null) {
@@ -48,7 +55,7 @@ public class CityModel extends BmobObject {
                             values.put("parentid", ele.getProvinceId());
                             db.insert("City", null, values);
                         }
-                        getCityData(mListener);
+                        getCityData(parentId, mListener);
                     }else {
                         mListener.onError(e);
                     }
@@ -107,10 +114,5 @@ public class CityModel extends BmobObject {
         public void setmProvince(BmobRelation mProvince) {
             this.mProvince = mProvince;
         }
-    }
-
-    public interface OnResponseListerer {
-        void onSuccess(List<City> cityList);
-        void onError(BmobException e);
     }
 }

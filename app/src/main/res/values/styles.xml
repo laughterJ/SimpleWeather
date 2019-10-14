@@ -12,7 +12,7 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
-    <style name="LivingIndexTextStyle">
+    <style name="CommonTextStyle">
         <item name="android:text">@string/empty_data</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorWhite</item>

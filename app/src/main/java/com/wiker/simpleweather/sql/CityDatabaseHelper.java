@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 public class CityDatabaseHelper extends SQLiteOpenHelper {
 
+    public static final int DB_VERSION = 1;
+
     private static final String CREATE_PROVINCE = "create table Province ("
             + "id integer primary key,"
             + "name text,"
