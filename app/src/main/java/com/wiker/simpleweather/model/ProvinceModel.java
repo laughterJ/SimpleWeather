@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.google.gson.annotations.SerializedName;
 import com.wiker.framework.application.MyApplication;
-import com.wiker.simpleweather.adapter.AddressAdapter;
+import com.wiker.simpleweather.adapter.AreaAdapter;
 import com.wiker.simpleweather.sql.CityDatabaseHelper;
 import com.wiker.simpleweather.views.AreaPickerView.OnResponseListener;
 
@@ -35,7 +35,7 @@ public class ProvinceModel{
                 mProvince.setProvinceCode(mCursor.getString(mCursor.getColumnIndex("areacode")));
                 provinceList.add(mProvince);
             }while (mCursor.moveToNext());
-            mListerer.onSuccess((List)provinceList, AddressAdapter.TYPE_PPOVINCE);
+            mListerer.onSuccess((List)provinceList, AreaAdapter.TYPE_PROVINCE);
         }else {
             BmobQuery<Province> mQuery = new BmobQuery<>();
             mQuery.findObjects(new FindListener<Province>() {

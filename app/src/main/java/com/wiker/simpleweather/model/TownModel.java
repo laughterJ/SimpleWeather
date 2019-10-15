@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.google.gson.annotations.SerializedName;
 import com.wiker.framework.application.MyApplication;
 
-import com.wiker.simpleweather.adapter.AddressAdapter;
+import com.wiker.simpleweather.adapter.AreaAdapter;
 import com.wiker.simpleweather.sql.CityDatabaseHelper;
 import com.wiker.simpleweather.views.AreaPickerView.OnResponseListener;
 
@@ -39,7 +39,7 @@ public class TownModel extends BmobObject {
                 mTown.setCityId(mCursor.getInt(mCursor.getColumnIndex("parentid")));
                 townList.add(mTown);
             }while (mCursor.moveToNext());
-            mListener.onSuccess((List)townList, AddressAdapter.TYPE_TOWN);
+            mListener.onSuccess((List)townList, AreaAdapter.TYPE_TOWN);
         }else {
             BmobQuery<Town> mQuery = new BmobQuery<>();
             mQuery.addWhereEqualTo("parentid", parentId)

@@ -1,12 +1,8 @@
 package com.wiker.simpleweather.activity;
 
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -17,11 +13,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wiker.framework.activity.BaseActivity;
 import com.wiker.simpleweather.adapter.HourlyWeatherAdapter;
 import com.wiker.simpleweather.R;
-import com.wiker.simpleweather.model.CityModel;
 import com.wiker.simpleweather.model.ForecastWeather;
 import com.wiker.simpleweather.model.HourlyWeather;
 import com.wiker.simpleweather.model.LivingIndexItem;
-import com.wiker.simpleweather.model.ProvinceModel;
+import com.wiker.simpleweather.views.AreaPickerView.AreaPickerView;
+import com.wiker.simpleweather.views.AreaPickerView.OnCompleteListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +26,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements OnCompleteListener {
 
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.fab_cut) FloatingActionButton fabCut;
@@ -41,10 +37,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.ll_living_index) LinearLayout llLivingIndex;
 
     private List<LivingIndexItem> livingIndexItems;
-    private List<ProvinceModel.Province> provinceList;
-    private List<CityModel.City> cityList;
-    private View pickerView;
-    private ListView lvAddress;
 
     @Override
     public int getLayout() {
@@ -125,12 +117,13 @@ public class MainActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab_cut:
-//                PopupWindow popupWindow = new PopupWindow(this);
-//                popupWindow.setContentView(pickerView);
-//                popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-//                popupWindow.setBackgroundDrawable(new BitmapDrawable());
-//                popupWindow.showAsDropDown(rvHourly);
+                new AreaPickerView(this, R.style.AreaPickerViewTheme, this).show();
                 break;
         }
+    }
+
+    @Override
+    public void onComplete(String area) {
+
     }
 }

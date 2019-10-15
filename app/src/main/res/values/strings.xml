@@ -6,4 +6,5 @@
     <string name="living_index">舒适度指数：%1$s</string>
 
     <string name="confirm">确定</string>
+    <string name="list_empty_text">数据搬运中...</string>
 </resources>

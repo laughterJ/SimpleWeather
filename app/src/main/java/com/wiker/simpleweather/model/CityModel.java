@@ -3,11 +3,10 @@ package com.wiker.simpleweather.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 import com.wiker.framework.application.MyApplication;
-import com.wiker.simpleweather.adapter.AddressAdapter;
+import com.wiker.simpleweather.adapter.AreaAdapter;
 import com.wiker.simpleweather.sql.CityDatabaseHelper;
 import com.wiker.simpleweather.views.AreaPickerView.OnResponseListener;
 
@@ -39,7 +38,7 @@ public class CityModel extends BmobObject {
                 mCity.setProvinceId(mCursor.getInt(mCursor.getColumnIndex("parentid")));
                 cityList.add(mCity);
             }while (mCursor.moveToNext());
-            mListener.onSuccess((List) cityList, AddressAdapter.TYPE_CITY);
+            mListener.onSuccess((List) cityList, AreaAdapter.TYPE_CITY);
         }else {
             BmobQuery<City> mQuery = new BmobQuery<>();
             mQuery.addWhereEqualTo("parentid", parentId)

@@ -10,23 +10,23 @@ import com.wiker.framework.application.MyApplication;
 import com.wiker.simpleweather.R;
 import com.wiker.simpleweather.model.CityModel;
 import com.wiker.simpleweather.model.ProvinceModel;
+import com.wiker.simpleweather.model.TownModel;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.bmob.v3.BmobObject;
 
-public class AddressAdapter extends BaseAdapter {
+public class AreaAdapter extends BaseAdapter {
 
-    public static final int TYPE_PPOVINCE = 0;
+    public static final int TYPE_PROVINCE = 0;
     public static final int TYPE_CITY = 1;
     public static final int TYPE_TOWN = 2;
 
     private List<Object> dataList;
     private int dataType;
 
-    public AddressAdapter(List<Object> dataList, int dataType) {
+    public AreaAdapter(List<Object> dataList, int dataType) {
         this.dataList = dataList;
         this.dataType = dataType;
     }
@@ -50,13 +50,14 @@ public class AddressAdapter extends BaseAdapter {
     public View getView(int position, View itemView, ViewGroup parent) {
         String addressData = null;
         switch (dataType) {
-            case TYPE_PPOVINCE:
+            case TYPE_PROVINCE:
                 addressData = ((ProvinceModel.Province) dataList.get(position)).getProvinceName();
                 break;
             case TYPE_CITY:
                 addressData = ((CityModel.City) dataList.get(position)).getCityName();
                 break;
             case TYPE_TOWN:
+                addressData = ((TownModel.Town) dataList.get(position)).getTownName();
                 break;
         }
         ViewHolder mHolder = null;
